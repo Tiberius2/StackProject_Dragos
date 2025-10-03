@@ -47,7 +47,7 @@ public class DraggableLayer : MonoBehaviour
                     new Vector3(world.x, transform.position.y, world.z);
             }
         }
-        
+
     }
     void OnMouseDown()
     {
@@ -82,7 +82,7 @@ public class DraggableLayer : MonoBehaviour
                     if (layerType != expected.slotType)
                     {
                         Debug.Log("we are heere!");
-                        glow.SetGlowColorHex("69B3FF"); // or dim color
+                        glow.SetGlowColorHex("69B3FF", 0); // or dim color
                         var feedback = zone.GetComponentInChildren<DropZoneFeedback>();
                         if (feedback != null)
                             feedback.ShakeZ();
@@ -133,11 +133,11 @@ public class DraggableLayer : MonoBehaviour
         rb.isKinematic = false;
         rb.useGravity = true;
     }  // Expose setters for GameManager to override stored start transform
-   public void SetStartTransform(Vector3 pos, Quaternion rot, Vector3 scale) 
-    { 
-        startPosition = pos; 
-        startRotation= rot; 
-        startScale = scale; 
+    public void SetStartTransform(Vector3 pos, Quaternion rot, Vector3 scale)
+    {
+        startPosition = pos;
+        startRotation = rot;
+        startScale = scale;
     }
 
 
@@ -152,8 +152,10 @@ public class DraggableLayer : MonoBehaviour
             {
                 int current = GameManager.Instance.CurrentIndex;
                 LayerSlot expected = GameManager.Instance.orderedSlots[current];
-                string hex = (layerType == expected.slotType) ? "46FF00" : "FF3600";
-                glow.SetGlowColorHex(hex);
+                if (layerType != expected.slotType)
+                {
+                    glow.SetGlowColorHex("FF3600", .25f);
+                }
             }
         }
     }
@@ -167,7 +169,7 @@ public class DraggableLayer : MonoBehaviour
             var glow = other.GetComponentInChildren<GlowEffect>();
             if (glow != null)
             {
-                glow.SetGlowColorHex("69B3FF"); // optional: neutral white or dim
+                glow.SetGlowColorHex("69B3FF", 0); // optional: neutral white or dim
             }
         }
     }

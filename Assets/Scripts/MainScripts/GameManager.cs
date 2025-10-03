@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour
             var glow = zone.GetComponentInChildren<GlowEffect>();
             if (glow != null)
             {
-                glow.SetGlowColorHex("69B3FF"); // or your neutral/default color
+                glow.SetGlowColorHex("69B3FF", 0); // or your neutral/default color
             }
         }
         nextIndex++;
