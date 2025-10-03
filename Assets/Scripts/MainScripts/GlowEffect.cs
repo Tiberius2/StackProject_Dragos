@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlowEffect : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GlowEffect : MonoBehaviour
     public float glowIntensityMin = 0.2f;
     public float glowIntensityMax = 2f;
     public float glowSpeed = 2f;
+
+    public Image vignette;
 
     private void Update()
     {
@@ -22,15 +25,15 @@ public class GlowEffect : MonoBehaviour
 
         // Make sure emission is enabled on the shader
         DynamicGI.SetEmissive(GetComponent<Renderer>(), finalColor);
-        
-
     }
 
-    public void SetGlowColorHex(string hex)
+    public void SetGlowColorHex(string hex, float alpha)
     {
         if (ColorUtility.TryParseHtmlString("#" + hex, out Color parsed))
         {
             glowColor = parsed;
+            vignette.color = parsed;
+            vignette.GetComponent<CanvasGroup>().alpha = alpha;
         }
     }
 

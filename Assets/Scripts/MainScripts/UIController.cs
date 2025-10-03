@@ -17,15 +17,16 @@ public class UIController : MonoBehaviour
         }
         if(gameRoot != null) gameRoot.SetActive(false);
     }
+    
     public void OnPlayPressed()
     {
         if (playButton != null)
         {
             playButton.GetComponent<FadeUI>().FadeOut();
         }
-        if(gameRoot != null) gameRoot.SetActive(true);
-        
-        if (GameManager.Instance != null) 
+        if (gameRoot != null) gameRoot.SetActive(true);
+
+        if (GameManager.Instance != null)
             GameManager.Instance.StartGame();
 
     }
