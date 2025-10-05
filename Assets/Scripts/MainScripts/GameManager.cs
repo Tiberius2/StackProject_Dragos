@@ -23,8 +23,11 @@ public class GameManager : MonoBehaviour
     public Transform carSpawnAbove;
     public bool gameStarted = false;
 
-
     public GameObject airAnchorHighlight;
+    
+    [Header("Confetti")]
+    public GameObject confetti;
+    public GameObject characterMove;
     // runtime state
     int nextIndex = 0;
     bool busy = false;
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (camZoom != null) camZoom.ZoomOut();
         PlaceAndShuffleSceneInstances();
         UpdateHighlights();
+        characterMove.SetActive(true);
     }
 
     // -------------------------
@@ -261,7 +265,16 @@ public class GameManager : MonoBehaviour
             if (ui != null) ui.ShowReplayButton();
             var camZoom = Camera.main.GetComponent<CameraZoomOrtho>();
             if (camZoom != null) camZoom.ZoomIn();
+
+            StartCoroutine(ShowConfetti());
         }
+    }
+
+    IEnumerator ShowConfetti()
+    {
+        confetti.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        confetti.SetActive(false);
     }
 
     IEnumerator DropCar()
