@@ -3279,7 +3279,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uFEA2\uFEF4\uFEA4\uFEBC\uFEDF\u0627 \uFED6\uFEF3\uFEAE\uFEC4\uFEDF\u0627
-    \u0650\uFEE6\uFE91\u0627"
+    \uFEE6\uFE91\u0627"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d2e8624cc1f8eca41a66953ead0410a5, type: 2}
   m_sharedMaterial: {fileID: -4532081579958398294, guid: d2e8624cc1f8eca41a66953ead0410a5, type: 2}
